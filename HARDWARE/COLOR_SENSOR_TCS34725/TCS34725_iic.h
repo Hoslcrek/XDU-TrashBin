@@ -105,7 +105,7 @@ void TCS34725_Enable(void);
 void TCS34725_Disable(void);
 uint16_t TCS34725_GetChannelData(uint8_t reg);
 uint8_t TCS34725_GetRawData(COLOR_RGBC *rgbc);
-
+uint16_t TCS34725_GetRGB565Data(COLOR_RGBC *rgbc);
 
 
 

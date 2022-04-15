@@ -448,11 +448,6 @@
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\DISTANCE_SENSOR_VL6180X\VL6180X_iic.c</FilePath>
             </File>
-            <File>
-              <FileName>VL6180X_iic.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\HARDWARE\DISTANCE_SENSOR_VL6180X\VL6180X_iic.h</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>

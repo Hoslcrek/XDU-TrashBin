@@ -318,21 +318,21 @@ u16 VL6180X_Read_HalfWold(u16 reg)
 	u16 res;
 	uint8_t Index_H = (uint8_t)(reg >> 8);
 	uint8_t Index_L = (uint8_t)(reg & 0xff);
-    VL6180X_IIC_Start(); 
+  VL6180X_IIC_Start(); 
 	VL6180X_IIC_Send_Byte((VL6180X_DEFAULT_I2C_ADDR<<1)|0);//发送器件地址+写命令	
 	VL6180X_IIC_Wait_Ack();		//等待应答 
-    VL6180X_IIC_Send_Byte(Index_H);	//写寄存器地址
-    VL6180X_IIC_Wait_Ack();		//等待应答
+  VL6180X_IIC_Send_Byte(Index_H);	//写寄存器地址
+  VL6180X_IIC_Wait_Ack();		//等待应答
 	VL6180X_IIC_Send_Byte(Index_L);	//写寄存器地址
 	VL6180X_IIC_Wait_Ack();	
 	
-    VL6180X_IIC_Start();
+  VL6180X_IIC_Start();
 	VL6180X_IIC_Send_Byte((VL6180X_DEFAULT_I2C_ADDR<<1)|1);//发送器件地址+读命令	
-    VL6180X_IIC_Wait_Ack();		//等待应答 
+  VL6180X_IIC_Wait_Ack();		//等待应答 
 	res = VL6180X_IIC_Read_Byte(1);//读取数据,发送ACK 
 	res <<= 8;
 	res |= VL6180X_IIC_Read_Byte(0);//读取数据,发送nACK 
-    VL6180X_IIC_Stop();			//产生一个停止条件 
+  VL6180X_IIC_Stop();			//产生一个停止条件 
 	return res;
 }
 

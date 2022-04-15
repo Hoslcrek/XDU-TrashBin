@@ -418,10 +418,25 @@ uint8_t TCS34725_GetRawData(COLOR_RGBC *rgbc){
         u8 status = TCS34725_STATUS_AVALID;
         TCS34725_Read(TCS34725_STATUS,&status,1);
         if(status & TCS34725_STATUS_AVALID){
-                rgbc->c = TCS34725_GetChannelData(TCS34725_CDATAL);
-                rgbc->r = TCS34725_GetChannelData(TCS34725_RDATAL);
-                rgbc->g = TCS34725_GetChannelData(TCS34725_GDATAL);
-                rgbc->b = TCS34725_GetChannelData(TCS34725_BDATAL);
+                rgbc->c = TCS34725_GetChannelData(TCS34725_CDATAH);
+                rgbc->r = TCS34725_GetChannelData(TCS34725_RDATAH);
+                rgbc->g = TCS34725_GetChannelData(TCS34725_GDATAH);
+                rgbc->b = TCS34725_GetChannelData(TCS34725_BDATAH);
+        }
+				return 0;
+}
+
+uint16_t TCS34725_GetRGB565Data(COLOR_RGBC *rgbc){
+				u16 ret=0;
+        u8 status = TCS34725_STATUS_AVALID;
+        TCS34725_Read(TCS34725_STATUS,&status,1);
+        if(status & TCS34725_STATUS_AVALID){
+                rgbc->c = TCS34725_GetChannelData(TCS34725_CDATAH);
+                rgbc->r = TCS34725_GetChannelData(TCS34725_RDATAH);
+                rgbc->g = TCS34725_GetChannelData(TCS34725_GDATAH);
+                rgbc->b = TCS34725_GetChannelData(TCS34725_BDATAH);
+								ret = (rgbc->r)<<11 | (rgbc->g)<<5 | (rgbc->b)<<0 ;
+					return ret;
         }
 				return 0;
 }

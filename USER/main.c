@@ -31,8 +31,9 @@ COLOR_HSL hsl;
 
 int main(void)
 { 
-	int i=0,j=0;
+	int i=0;
 	uint8_t range=0;
+	uint16_t RGB565=0;
 
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);//设置系统中断优先级分组2
 	delay_init(100);  //初始化延时函数
@@ -53,24 +54,21 @@ int main(void)
 		 
 	while(1)
 	{
-			range=VL6180X_Read_Range();
+			range = VL6180X_Read_Range();
 			TCS34725_GetRawData(&rgb);
-			LCD_ShowNum(0,50,rgb.r,5,32);
-			LCD_ShowNum(0,100,rgb.g,5,32);
-			LCD_ShowNum(0,150,rgb.b,5,32);
+			RGB565 = TCS34725_GetRGB565Data(&rgb); 
 			
-			LCD_ShowNum(0,200,range,5,32);
+			LCD_ShowNum(0,0,rgb.r,5,32);
+			LCD_ShowNum(50,0,rgb.g,5,32);
+			LCD_ShowNum(100,0,rgb.b,5,32);
+			
+			LCD_ShowString(0,50,120,16,16,"Distance: ");
+			LCD_ShowNum(120,120,range,3,16);
+			
+			LCD_ShowString(0,120,120,16,16,"Current Color: ");
+			LCD_Fill(120,120,150,150,RGB565);
 			
 			delay_ms(1000);
-		
-			if(j==20){
-				j=0;
-			}
-			
-			LCD_ShowNum(0,230,j,2,32);
-			
-			j++;
-
 	}
 		
 }
