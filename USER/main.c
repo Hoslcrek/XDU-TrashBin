@@ -6,6 +6,7 @@
 #include "spi.h"
 #include "TCS34725_iic.h"
 #include "VL6180X_iic.h"
+#include "FPGA_signals.h"
 
 // WARNING: PA2,PA3,PA9,PA10最好别用其他用途
 
@@ -31,26 +32,24 @@ COLOR_HSL hsl;
 
 int main(void)
 { 
-	int i=0;
 	uint8_t range=0;
 	uint16_t RGB565=0;
+	uint8_t i=1;
 
-	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);//设置系统中断优先级分组2
-	delay_init(100);  //初始化延时函数
-	uart_init(115200);	//初始化串口波特率为115200
-	LED_Init();					//初始化LED 
- 	LCD_Init();					//LCD初始化  
- 	
+	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+	delay_init(100);
+	uart_init(115200);
+	LED_Init();
+ 	LCD_Init();
+	TCS34725_Init();
 	VL6180X_Init();
+	FPGA_GPIO_Init();
 	
 	LCD_Clear(BLUE);
 	Display_TongFei_LOGO(0, 0);
 
-	i=TCS34725_Init();
-	LCD_ShowNum(0,0,i,1,32);
 
 	delay_ms(100);
-	TCS34725_Setup();
 		 
 	while(1)
 	{
@@ -58,17 +57,32 @@ int main(void)
 			TCS34725_GetRawData(&rgb);
 			RGB565 = TCS34725_GetRGB565Data(&rgb); 
 			
-			LCD_ShowNum(0,0,rgb.r,5,32);
-			LCD_ShowNum(50,0,rgb.g,5,32);
-			LCD_ShowNum(100,0,rgb.b,5,32);
+			if(i==1)
+			{
+				FPGA_Send_Rotate(CCW_ROTATE_90);
+				delay_ms(2000);
+				FPGA_Send_Rotate(CCW_ROTATE_45);
+				delay_ms(2000);
+				FPGA_Send_Rotate(CW_ROTATE_0);
+				delay_ms(2000);
+				FPGA_Send_Rotate(CW_ROTATE_45);
+				delay_ms(2000);
+				FPGA_Send_Rotate(CW_ROTATE_90);
+			}
+			
+			i=1;
+		
+			LCD_ShowNum(0,0,rgb.r,5,16);
+			LCD_ShowNum(50,0,rgb.g,5,16);
+			LCD_ShowNum(100,0,rgb.b,5,16);
 			
 			LCD_ShowString(0,50,120,16,16,"Distance: ");
-			LCD_ShowNum(120,120,range,3,16);
+			LCD_ShowNum(120,50,range,3,16);
 			
 			LCD_ShowString(0,120,120,16,16,"Current Color: ");
 			LCD_Fill(120,120,150,150,RGB565);
 			
-			delay_ms(1000);
+			delay_ms(800);
 	}
 		
 }

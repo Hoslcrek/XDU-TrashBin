@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F411xE,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\SYSTEM\delay;..\CORE;..\FWLIB\inc;..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\HARDWARE\COLOR_SENSOR_TCS34725;..\HARDWARE\LED;..\HARDWARE\SPI;..\HARDWARE\TFTLCD;..\HARDWARE\DISTANCE_SENSOR_VL6180X</IncludePath>
+              <IncludePath>..\SYSTEM\delay;..\CORE;..\FWLIB\inc;..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\HARDWARE\COLOR_SENSOR_TCS34725;..\HARDWARE\LED;..\HARDWARE\SPI;..\HARDWARE\TFTLCD;..\HARDWARE\DISTANCE_SENSOR_VL6180X;..\HARDWARE\FPGA_SIGNALS</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -447,6 +447,16 @@
               <FileName>VL6180X_iic.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\DISTANCE_SENSOR_VL6180X\VL6180X_iic.c</FilePath>
+            </File>
+            <File>
+              <FileName>FPGA_signals.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\FPGA_SIGNALS\FPGA_signals.c</FilePath>
+            </File>
+            <File>
+              <FileName>FPGA_signals.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\HARDWARE\FPGA_SIGNALS\FPGA_signals.h</FilePath>
             </File>
           </Files>
         </Group>

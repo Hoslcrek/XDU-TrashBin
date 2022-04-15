@@ -359,8 +359,8 @@ unsigned char TCS34725_Init(void){
 				TCS34725_I2C_Init();
         TCS34725_Read(TCS34725_ID,&id,1);
         if(id==0x44){
-                TCS34725_SetIntegrationTime(TCS34725_INTEGRATIONTIME_240MS);
-                TCS34725_SetGain(TCS34725_GAIN_4X);
+                TCS34725_SetIntegrationTime(TCS34725_INTEGRATIONTIME_700MS);
+                TCS34725_SetGain(TCS34725_GAIN_60X);
                 TCS34725_Enable();
                 return 1;
 
@@ -382,7 +382,7 @@ void TCS34725_SetGain(uint8_t gain){
 
 void TCS34725_Setup(void){
         TCS34725_SetIntegrationTime(TCS34725_INTEGRATIONTIME_240MS);
-        TCS34725_SetGain(TCS34725_GAIN_4X);
+        TCS34725_SetGain(TCS34725_GAIN_60X);
 }
 
 
@@ -418,10 +418,10 @@ uint8_t TCS34725_GetRawData(COLOR_RGBC *rgbc){
         u8 status = TCS34725_STATUS_AVALID;
         TCS34725_Read(TCS34725_STATUS,&status,1);
         if(status & TCS34725_STATUS_AVALID){
-                rgbc->c = TCS34725_GetChannelData(TCS34725_CDATAH);
-                rgbc->r = TCS34725_GetChannelData(TCS34725_RDATAH);
-                rgbc->g = TCS34725_GetChannelData(TCS34725_GDATAH);
-                rgbc->b = TCS34725_GetChannelData(TCS34725_BDATAH);
+                rgbc->c = TCS34725_GetChannelData(TCS34725_CDATAL);
+                rgbc->r = TCS34725_GetChannelData(TCS34725_RDATAL);
+                rgbc->g = TCS34725_GetChannelData(TCS34725_GDATAL);
+                rgbc->b = TCS34725_GetChannelData(TCS34725_BDATAL);
         }
 				return 0;
 }
@@ -431,11 +431,11 @@ uint16_t TCS34725_GetRGB565Data(COLOR_RGBC *rgbc){
         u8 status = TCS34725_STATUS_AVALID;
         TCS34725_Read(TCS34725_STATUS,&status,1);
         if(status & TCS34725_STATUS_AVALID){
-                rgbc->c = TCS34725_GetChannelData(TCS34725_CDATAH);
-                rgbc->r = TCS34725_GetChannelData(TCS34725_RDATAH);
-                rgbc->g = TCS34725_GetChannelData(TCS34725_GDATAH);
-                rgbc->b = TCS34725_GetChannelData(TCS34725_BDATAH);
-								ret = (rgbc->r)<<11 | (rgbc->g)<<5 | (rgbc->b)<<0 ;
+                rgbc->c = TCS34725_GetChannelData(TCS34725_CDATAL);
+                rgbc->r = TCS34725_GetChannelData(TCS34725_RDATAL);
+                rgbc->g = TCS34725_GetChannelData(TCS34725_GDATAL);
+                rgbc->b = TCS34725_GetChannelData(TCS34725_BDATAL);
+								ret = ((rgbc->r)>>11)<<11 | ((rgbc->g)>>10)<<9 | ((rgbc->b)>>11)<<0 ;
 					return ret;
         }
 				return 0;
