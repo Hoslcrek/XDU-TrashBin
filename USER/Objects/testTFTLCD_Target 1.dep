@@ -1,6 +1,6 @@
 Dependencies for Project 'testTFTLCD', Target 'Target 1': (DO NOT MODIFY !)
 CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
-F (.\main.c)(0x62595F57)(-c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I ..\SYSTEM\delay -I ..\CORE -I ..\FWLIB\inc -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\COLOR_SENSOR_TCS34725 -I ..\HARDWARE\LED -I ..\HARDWARE\SPI -I ..\HARDWARE\TFTLCD -I ..\HARDWARE\DISTANCE_SENSOR_VL6180X -I ..\HARDWARE\FPGA_SIGNALS-ID:\Keil5\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="536" -DSTM32F411xE -DSTM32F411xE -DUSE_STDPERIPH_DRIVER-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (.\main.c)(0x625A963C)(-c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I ..\SYSTEM\delay -I ..\CORE -I ..\FWLIB\inc -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\COLOR_SENSOR_TCS34725 -I ..\HARDWARE\LED -I ..\HARDWARE\SPI -I ..\HARDWARE\TFTLCD -I ..\HARDWARE\DISTANCE_SENSOR_VL6180X -I ..\HARDWARE\FPGA_SIGNALS-ID:\Keil5\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="536" -DSTM32F411xE -DSTM32F411xE -DUSE_STDPERIPH_DRIVER-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (..\SYSTEM\sys\sys.h)(0x6258DF83)
 I (..\USER\stm32f4xx.h)(0x5710F3A1)
 I (..\CORE\core_cm4.h)(0x5710F3A0)
@@ -39,7 +39,7 @@ I (..\HARDWARE\SPI\spi.h)(0x6257A951)
 I (..\HARDWARE\COLOR_SENSOR_TCS34725\TCS34725_iic.h)(0x6258E344)
 I (..\HARDWARE\DISTANCE_SENSOR_VL6180X\VL6180X_iic.h)(0x625830D6)
 I (D:\Keil5\ARM\ARMCC\include\string.h)(0x6025237E)
-I (..\HARDWARE\FPGA_SIGNALS\FPGA_signals.h)(0x62595187)
+I (..\HARDWARE\FPGA_SIGNALS\FPGA_signals.h)(0x625A79D8)
 F (.\system_stm32f4xx.c)(0x5710F3A1)(-c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I ..\SYSTEM\delay -I ..\CORE -I ..\FWLIB\inc -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\COLOR_SENSOR_TCS34725 -I ..\HARDWARE\LED -I ..\HARDWARE\SPI -I ..\HARDWARE\TFTLCD -I ..\HARDWARE\DISTANCE_SENSOR_VL6180X -I ..\HARDWARE\FPGA_SIGNALS-ID:\Keil5\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="536" -DSTM32F411xE -DSTM32F411xE -DUSE_STDPERIPH_DRIVER-o .\objects\system_stm32f4xx.o --omf_browse .\objects\system_stm32f4xx.crf --depend .\objects\system_stm32f4xx.d)
 I (stm32f4xx.h)(0x5710F3A1)
 I (..\CORE\core_cm4.h)(0x5710F3A0)
@@ -291,7 +291,7 @@ I (..\HARDWARE\TFTLCD\tftlcd.h)(0x6256D825)
 I (..\HARDWARE\TFTLCD\font.h)(0x5BE29ECA)
 I (..\HARDWARE\SPI\spi.h)(0x6257A951)
 I (..\HARDWARE\TFTLCD\TongFei.h)(0x6256D528)
-F (..\HARDWARE\COLOR_SENSOR_TCS34725\TCS34725_iic.c)(0x62594A2F)(-c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I ..\SYSTEM\delay -I ..\CORE -I ..\FWLIB\inc -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\COLOR_SENSOR_TCS34725 -I ..\HARDWARE\LED -I ..\HARDWARE\SPI -I ..\HARDWARE\TFTLCD -I ..\HARDWARE\DISTANCE_SENSOR_VL6180X -I ..\HARDWARE\FPGA_SIGNALS-ID:\Keil5\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="536" -DSTM32F411xE -DSTM32F411xE -DUSE_STDPERIPH_DRIVER-o .\objects\tcs34725_iic.o --omf_browse .\objects\tcs34725_iic.crf --depend .\objects\tcs34725_iic.d)
+F (..\HARDWARE\COLOR_SENSOR_TCS34725\TCS34725_iic.c)(0x625A9AFD)(-c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I ..\SYSTEM\delay -I ..\CORE -I ..\FWLIB\inc -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\COLOR_SENSOR_TCS34725 -I ..\HARDWARE\LED -I ..\HARDWARE\SPI -I ..\HARDWARE\TFTLCD -I ..\HARDWARE\DISTANCE_SENSOR_VL6180X -I ..\HARDWARE\FPGA_SIGNALS-ID:\Keil5\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="536" -DSTM32F411xE -DSTM32F411xE -DUSE_STDPERIPH_DRIVER-o .\objects\tcs34725_iic.o --omf_browse .\objects\tcs34725_iic.crf --depend .\objects\tcs34725_iic.d)
 I (..\HARDWARE\COLOR_SENSOR_TCS34725\TCS34725_iic.h)(0x6258E344)
 I (..\SYSTEM\sys\sys.h)(0x6258DF83)
 I (..\USER\stm32f4xx.h)(0x5710F3A1)
@@ -357,8 +357,8 @@ I (..\FWLIB\inc\stm32f4xx_wwdg.h)(0x5710F365)
 I (..\FWLIB\inc\misc.h)(0x5710F364)
 I (..\FWLIB\inc\stm32f4xx_flash_ramfunc.h)(0x5710F365)
 I (..\SYSTEM\delay\delay.h)(0x6257A935)
-F (..\HARDWARE\FPGA_SIGNALS\FPGA_signals.c)(0x62596DE0)(-c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I ..\SYSTEM\delay -I ..\CORE -I ..\FWLIB\inc -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\COLOR_SENSOR_TCS34725 -I ..\HARDWARE\LED -I ..\HARDWARE\SPI -I ..\HARDWARE\TFTLCD -I ..\HARDWARE\DISTANCE_SENSOR_VL6180X -I ..\HARDWARE\FPGA_SIGNALS-ID:\Keil5\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="536" -DSTM32F411xE -DSTM32F411xE -DUSE_STDPERIPH_DRIVER-o .\objects\fpga_signals.o --omf_browse .\objects\fpga_signals.crf --depend .\objects\fpga_signals.d)
-I (..\HARDWARE\FPGA_SIGNALS\FPGA_signals.h)(0x62595187)
+F (..\HARDWARE\FPGA_SIGNALS\FPGA_signals.c)(0x625A79D0)(-c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I ..\SYSTEM\delay -I ..\CORE -I ..\FWLIB\inc -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\COLOR_SENSOR_TCS34725 -I ..\HARDWARE\LED -I ..\HARDWARE\SPI -I ..\HARDWARE\TFTLCD -I ..\HARDWARE\DISTANCE_SENSOR_VL6180X -I ..\HARDWARE\FPGA_SIGNALS-ID:\Keil5\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="536" -DSTM32F411xE -DSTM32F411xE -DUSE_STDPERIPH_DRIVER-o .\objects\fpga_signals.o --omf_browse .\objects\fpga_signals.crf --depend .\objects\fpga_signals.d)
+I (..\HARDWARE\FPGA_SIGNALS\FPGA_signals.h)(0x625A79D8)
 I (..\SYSTEM\sys\sys.h)(0x6258DF83)
 I (..\USER\stm32f4xx.h)(0x5710F3A1)
 I (..\CORE\core_cm4.h)(0x5710F3A0)
@@ -388,7 +388,7 @@ I (..\FWLIB\inc\stm32f4xx_usart.h)(0x5710F365)
 I (..\FWLIB\inc\stm32f4xx_wwdg.h)(0x5710F365)
 I (..\FWLIB\inc\misc.h)(0x5710F364)
 I (..\FWLIB\inc\stm32f4xx_flash_ramfunc.h)(0x5710F365)
-F (..\HARDWARE\FPGA_SIGNALS\FPGA_signals.h)(0x62595187)()
+F (..\HARDWARE\FPGA_SIGNALS\FPGA_signals.h)(0x625A79D8)()
 F (..\CORE\startup_stm32f40_41xxx.s)(0x5710F3A0)(--cpu Cortex-M4.fp.sp -g --apcs=interwork -ID:\Keil5\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include--pd "__UVISION_VERSION SETA 536" --pd "STM32F411xE SETA 1"--list .\listings\startup_stm32f40_41xxx.lst --xref -o .\objects\startup_stm32f40_41xxx.o --depend .\objects\startup_stm32f40_41xxx.d)
 F (..\FWLIB\src\misc.c)(0x5710F365)(-c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I ..\SYSTEM\delay -I ..\CORE -I ..\FWLIB\inc -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\COLOR_SENSOR_TCS34725 -I ..\HARDWARE\LED -I ..\HARDWARE\SPI -I ..\HARDWARE\TFTLCD -I ..\HARDWARE\DISTANCE_SENSOR_VL6180X -I ..\HARDWARE\FPGA_SIGNALS-ID:\Keil5\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="536" -DSTM32F411xE -DSTM32F411xE -DUSE_STDPERIPH_DRIVER-o .\objects\misc.o --omf_browse .\objects\misc.crf --depend .\objects\misc.d)
 I (..\FWLIB\inc\misc.h)(0x5710F364)

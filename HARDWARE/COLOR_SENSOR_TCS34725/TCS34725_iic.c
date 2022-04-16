@@ -435,7 +435,7 @@ uint16_t TCS34725_GetRGB565Data(COLOR_RGBC *rgbc){
                 rgbc->r = TCS34725_GetChannelData(TCS34725_RDATAL);
                 rgbc->g = TCS34725_GetChannelData(TCS34725_GDATAL);
                 rgbc->b = TCS34725_GetChannelData(TCS34725_BDATAL);
-								ret = ((rgbc->r)>>11)<<11 | ((rgbc->g)>>10)<<9 | ((rgbc->b)>>11)<<0 ;
+								ret = ((rgbc->r)>>11)<<11 | ((rgbc->g)>>10)<<5 | ((rgbc->b)>>11)<<0 ;
 					return ret;
         }
 				return 0;

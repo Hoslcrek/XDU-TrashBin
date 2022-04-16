@@ -34,7 +34,7 @@ int main(void)
 { 
 	uint8_t range=0;
 	uint16_t RGB565=0;
-	uint8_t i=1;
+	uint8_t i=0;
 
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	delay_init(100);
@@ -57,20 +57,14 @@ int main(void)
 			TCS34725_GetRawData(&rgb);
 			RGB565 = TCS34725_GetRGB565Data(&rgb); 
 			
-			if(i==1)
+			if(i<5)
 			{
+				FPGA_Send_Rotate(ROTATE_0);
+				delay_ms(2000);
 				FPGA_Send_Rotate(CCW_ROTATE_90);
 				delay_ms(2000);
-				FPGA_Send_Rotate(CCW_ROTATE_45);
-				delay_ms(2000);
-				FPGA_Send_Rotate(CW_ROTATE_0);
-				delay_ms(2000);
-				FPGA_Send_Rotate(CW_ROTATE_45);
-				delay_ms(2000);
-				FPGA_Send_Rotate(CW_ROTATE_90);
+				i++;
 			}
-			
-			i=1;
 		
 			LCD_ShowNum(0,0,rgb.r,5,16);
 			LCD_ShowNum(50,0,rgb.g,5,16);
@@ -81,8 +75,8 @@ int main(void)
 			
 			LCD_ShowString(0,120,120,16,16,"Current Color: ");
 			LCD_Fill(120,120,150,150,RGB565);
+			delay_ms(1000);
 			
-			delay_ms(800);
 	}
 		
 }

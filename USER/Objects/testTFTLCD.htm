@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\testTFTLCD.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\testTFTLCD.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Fri Apr 15 21:06:44 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Sat Apr 16 18:31:30 2022
 <BR><P>
 <H3>Maximum Stack Usage =        200 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -567,7 +567,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[77]"></a>FPGA_GPIO_Init</STRONG> (Thumb, 66 bytes, Stack size 16 bytes, fpga_signals.o(i.FPGA_GPIO_Init))
+<P><STRONG><a name="[77]"></a>FPGA_GPIO_Init</STRONG> (Thumb, 68 bytes, Stack size 16 bytes, fpga_signals.o(i.FPGA_GPIO_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = FPGA_GPIO_Init &rArr; GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
@@ -576,7 +576,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[c2]"></a>FPGA_Send_Rotate</STRONG> (Thumb, 152 bytes, Stack size 0 bytes, fpga_signals.o(i.FPGA_Send_Rotate))
+<P><STRONG><a name="[c2]"></a>FPGA_Send_Rotate</STRONG> (Thumb, 148 bytes, Stack size 0 bytes, fpga_signals.o(i.FPGA_Send_Rotate))
 <BR><BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -1258,7 +1258,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 </UL>
 
-<P><STRONG><a name="[6c]"></a>main</STRONG> (Thumb, 294 bytes, Stack size 16 bytes, main.o(i.main))
+<P><STRONG><a name="[6c]"></a>main</STRONG> (Thumb, 262 bytes, Stack size 16 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = main &rArr; LCD_ShowNum &rArr; LCD_ShowChar &rArr; LCD_Address_Set &rArr; LCD_Write_Data &rArr; LCD_SPI_Send &rArr; SPI1_WriteData
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
