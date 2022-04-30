@@ -1,6 +1,6 @@
 #include "sys.h"
 #include "usart.h"	
-
+#include <string.h>
 //如果使用ucos,则包括下面的头文件即可.
 #if SYSTEM_SUPPORT_OS
 #include "includes.h"					//ucos 使用	  
@@ -37,6 +37,7 @@ int fputc(int ch, FILE *f)
 //串口1中断服务程序
 //注意,读取USARTx->SR能避免莫名其妙的错误   	
 u8 USART_RX_BUF[USART_REC_LEN];     //接收缓冲,最大USART_REC_LEN个字节.
+u8 CMD[USART_REC_LEN];  
 //接收状态
 //bit15，	接收完成标志
 //bit14，	接收到0x0d
@@ -100,29 +101,28 @@ void USART1_IRQHandler(void)                	//串口1中断服务程序
 #if SYSTEM_SUPPORT_OS 		//如果SYSTEM_SUPPORT_OS为真，则需要支持OS.
 	OSIntEnter();    
 #endif
-	if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)  //接收中断(接收到的数据必须是0x0d 0x0a结尾)
+	if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)  //规定以'/'结尾，忽略\r\n
 	{
-		Res =USART_ReceiveData(USART1);//(USART1->DR);	//读取接收到的数据
-		
-		if((USART_RX_STA&0x8000)==0)//接收未完成
-		{
-			if(USART_RX_STA&0x4000)//接收到了0x0d
-			{
-				if(Res!=0x0a)USART_RX_STA=0;//接收错误,重新开始
-				else USART_RX_STA|=0x8000;	//接收完成了 
-			}
-			else //还没收到0X0D
-			{	
-				if(Res==0x0d)USART_RX_STA|=0x4000;
-				else
-				{
-					USART_RX_BUF[USART_RX_STA&0X3FFF]=Res ;
+		Res = USART_ReceiveData(USART1);//(USART1->DR);	//读取接收到的数据
+
+		if(Res == '/'){
+			strcpy((char*)CMD,(char*)USART_RX_BUF);
+			USART_RX_STA = 0;
+			memset(USART_RX_BUF,0,sizeof(USART_RX_BUF[0])*USART_REC_LEN);
+		}
+		else{
+			if(Res != 0x0a && Res != 0x0d){
+				if(USART_RX_STA<USART_REC_LEN){
+					USART_RX_BUF[USART_RX_STA]=Res;
 					USART_RX_STA++;
-					if(USART_RX_STA>(USART_REC_LEN-1))USART_RX_STA=0;//接收数据错误,重新开始接收	  
-				}		 
+				}
+				else{
+					USART_RX_STA=0;
+				}
 			}
-		}   		 
-  } 
+		}	
+	}
+
 #if SYSTEM_SUPPORT_OS 	//如果SYSTEM_SUPPORT_OS为真，则需要支持OS.
 	OSIntExit();  											 
 #endif

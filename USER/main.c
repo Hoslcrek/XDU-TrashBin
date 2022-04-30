@@ -35,6 +35,7 @@ int main(void)
 	uint8_t range=0;
 	uint16_t RGB565=0;
 	uint8_t i=0;
+	
 
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	delay_init(100);
@@ -56,7 +57,10 @@ int main(void)
 			range = VL6180X_Read_Range();
 			TCS34725_GetRawData(&rgb);
 			RGB565 = TCS34725_GetRGB565Data(&rgb); 
+		
+			printf("Start");
 			
+		
 			if(i<5)
 			{
 				FPGA_Send_Rotate(ROTATE_0);
@@ -75,6 +79,10 @@ int main(void)
 			
 			LCD_ShowString(0,120,120,16,16,"Current Color: ");
 			LCD_Fill(120,120,150,150,RGB565);
+			
+			LCD_Fill(0,200,240,216,WHITE);
+			LCD_ShowString(0,200,200,16,16,(char*)CMD);
+
 			delay_ms(1000);
 			
 	}

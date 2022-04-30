@@ -453,11 +453,6 @@
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\FPGA_SIGNALS\FPGA_signals.c</FilePath>
             </File>
-            <File>
-              <FileName>FPGA_signals.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\HARDWARE\FPGA_SIGNALS\FPGA_signals.h</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>

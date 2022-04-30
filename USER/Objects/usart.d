@@ -31,3 +31,4 @@
 .\objects\usart.o: ..\FWLIB\inc\stm32f4xx_flash_ramfunc.h
 .\objects\usart.o: ..\SYSTEM\usart\usart.h
 .\objects\usart.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\usart.o: D:\Keil5\ARM\ARMCC\Bin\..\include\string.h

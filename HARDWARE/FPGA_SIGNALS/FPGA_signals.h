@@ -7,9 +7,9 @@
 #define CCW_ROTATE_180   4
 #define STOP 7
 
-#define BIT0 PAout(13)
-#define BIT1 PAout(14)
-#define BIT2 PAout(15)
+#define BIT0 PCout(0)
+#define BIT1 PCout(1)
+#define BIT2 PBout(0)
 
 void FPGA_GPIO_Init(void);
 void FPGA_Send_Rotate(uint8_t angle);
