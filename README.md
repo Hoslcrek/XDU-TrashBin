@@ -6,7 +6,7 @@ Board: NUCLEO-F411RE
 
 距离传感器：VL6180X and HC-SR04
 
-压力传感器: HX711
+压力传感器：HX711
 
 LCD屏幕：ATK-MD0130 V2.0
 
