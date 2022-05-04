@@ -39,3 +39,4 @@
 .\objects\main.o: ..\HARDWARE\DISTANCE_SENSOR_VL6180X\VL6180X_iic.h
 .\objects\main.o: D:\Keil5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\main.o: ..\HARDWARE\FPGA_SIGNALS\FPGA_signals.h
+.\objects\main.o: ..\HARDWARE\DISTANCE_SENSOR_HC-SR04\HC_SR04.h
