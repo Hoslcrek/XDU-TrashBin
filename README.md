@@ -4,7 +4,7 @@ Board: NUCLEO-F411RE
 
 颜色传感器： TCS34725
 
-距离传感器 ：VL6180X
+距离传感器：VL6180X and HC-SR04
 
 LCD屏幕：ATK-MD0130 V2.0
 
