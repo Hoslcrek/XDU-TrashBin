@@ -40,3 +40,4 @@
 .\objects\main.o: D:\Keil5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\main.o: ..\HARDWARE\FPGA_SIGNALS\FPGA_signals.h
 .\objects\main.o: ..\HARDWARE\DISTANCE_SENSOR_HC-SR04\HC_SR04.h
+.\objects\main.o: ..\HARDWARE\PRESSURE_SENSOR_HX711\HX711.h
