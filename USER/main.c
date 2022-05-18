@@ -35,11 +35,6 @@
 // SDA->PC6
 // SCL->PC8
 
-// FPGA接线：
-// PB0->B2
-// PC1->C1
-// PC0->C3
-
 // HC-SR04接线：
 // PA1->Echo
 // PA4->Trig
@@ -47,6 +42,11 @@
 // HX711接线：
 // PC8->DT
 // PC9->SCK
+
+// FPGA部分接线：
+// 顶盖部分：PB12->?
+// 识别部分: PA11->? , PA12->?
+// 底座转动部分：PB0->B2 , PC1->C1 , PC0->C3
 
 COLOR_RGBC rgb;
 COLOR_HSL hsl;
@@ -94,19 +94,19 @@ int main(void)
 		
 			if(strstr((char*)CMD,"h") != 0){
 				USART2_SendData("Start",6);
-				FPGA_Send_Rotate(ROTATE_0);
+
 			}
 			else if(strstr((char*)CMD,"i") != 0){
 				printf("%d",weight);
-				FPGA_Send_Rotate(CCW_ROTATE_90);
+
 			}
 			else if(strstr((char*)CMD,"j") != 0){
 				printf("135");
-				FPGA_Send_Rotate(CCW_ROTATE_135);
+
 			}
 			else if(strstr((char*)CMD,"k") != 0){
 				printf("180");
-				FPGA_Send_Rotate(CCW_ROTATE_180);
+
 			}
 			
 			

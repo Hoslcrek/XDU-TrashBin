@@ -1,15 +1,24 @@
 #include "sys.h"
 
-#define ROTATE_0   0
-#define CCW_ROTATE_45   1
-#define CCW_ROTATE_90   2
-#define CCW_ROTATE_135   3
-#define CCW_ROTATE_180   4
-#define STOP 7
+#define TOPBIT PBout(12) //顶盖舵机
 
-#define BIT0 PCout(0)
-#define BIT1 PCout(1)
-#define BIT2 PBout(0)
+#define RECONGBIT0 PAout(11) //识别部分舵机
+#define RECONGBIT1 PAout(12)
+
+#define BOTTOMBIT0 PCout(0) //底部舵机
+#define BOTTOMBIT1 PCout(1)
+#define BOTTOMBIT2 PBout(0)
 
 void FPGA_GPIO_Init(void);
-void FPGA_Send_Rotate(uint8_t angle);
+
+void FPGA_Cover_Open(void);
+void FPGA_Cover_Close(void);
+
+void FPGA_Recongize_Wait(void);
+void FPGA_Recongize_Watch(void);
+void FPGA_Recongize_Throw(void);
+
+void FPGA_Bottom_TrashBin1(void);
+void FPGA_Bottom_TrashBin2(void);
+void FPGA_Bottom_TrashBin3(void);
+void FPGA_Bottom_TrashBin4(void);
