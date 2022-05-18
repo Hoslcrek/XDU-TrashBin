@@ -6,7 +6,7 @@
 
 
 // #define HOSLCREK
-#define TONG_FEI
+// #define TONG_FEI
 
 #ifdef HOSLCREK
 
@@ -49,7 +49,7 @@ u16	BACK_COLOR 	= WHITE;	//背景颜色	默认为白色
  */
 static void LCD_Gpio_Init(void)
 {
-    GPIO_InitTypeDef  GPIO_InitStructure;
+  GPIO_InitTypeDef  GPIO_InitStructure;
  	
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);	 //使能PB端口时钟
 

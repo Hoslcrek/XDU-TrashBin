@@ -30,8 +30,9 @@
 .\objects\main.o: ..\FWLIB\inc\misc.h
 .\objects\main.o: ..\FWLIB\inc\stm32f4xx_flash_ramfunc.h
 .\objects\main.o: ..\SYSTEM\delay\delay.h
-.\objects\main.o: ..\SYSTEM\usart\usart.h
+.\objects\main.o: ..\SYSTEM\usart1\usart1.h
 .\objects\main.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\main.o: ..\SYSTEM\usart2\usart2.h
 .\objects\main.o: ..\HARDWARE\LED\led.h
 .\objects\main.o: ..\HARDWARE\TFTLCD\tftlcd.h
 .\objects\main.o: ..\HARDWARE\SPI\spi.h

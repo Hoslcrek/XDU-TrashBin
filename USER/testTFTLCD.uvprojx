@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F411xE,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\SYSTEM\delay;..\CORE;..\FWLIB\inc;..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\HARDWARE\COLOR_SENSOR_TCS34725;..\HARDWARE\LED;..\HARDWARE\SPI;..\HARDWARE\TFTLCD;..\HARDWARE\DISTANCE_SENSOR_VL6180X;..\HARDWARE\FPGA_SIGNALS;..\HARDWARE\DISTANCE_SENSOR_HC-SR04;..\HARDWARE\PRESSURE_SENSOR_HX711</IncludePath>
+              <IncludePath>..\SYSTEM\delay;..\CORE;..\FWLIB\inc;..\SYSTEM\sys;..\SYSTEM\usart1;..\USER;..\HARDWARE\COLOR_SENSOR_TCS34725;..\HARDWARE\LED;..\HARDWARE\SPI;..\HARDWARE\TFTLCD;..\HARDWARE\DISTANCE_SENSOR_VL6180X;..\HARDWARE\FPGA_SIGNALS;..\HARDWARE\DISTANCE_SENSOR_HC-SR04;..\HARDWARE\PRESSURE_SENSOR_HX711;..\SYSTEM\usart2</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -414,9 +414,14 @@
               <FilePath>..\SYSTEM\sys\sys.c</FilePath>
             </File>
             <File>
-              <FileName>usart.c</FileName>
+              <FileName>usart1.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\SYSTEM\usart\usart.c</FilePath>
+              <FilePath>..\SYSTEM\usart1\usart1.c</FilePath>
+            </File>
+            <File>
+              <FileName>usart2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\SYSTEM\usart2\usart2.c</FilePath>
             </File>
           </Files>
         </Group>

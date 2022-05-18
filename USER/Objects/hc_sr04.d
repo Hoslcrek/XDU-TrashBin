@@ -28,7 +28,7 @@
 .\objects\hc_sr04.o: ..\FWLIB\inc\stm32f4xx_wwdg.h
 .\objects\hc_sr04.o: ..\FWLIB\inc\misc.h
 .\objects\hc_sr04.o: ..\FWLIB\inc\stm32f4xx_flash_ramfunc.h
-.\objects\hc_sr04.o: ..\SYSTEM\usart\usart.h
+.\objects\hc_sr04.o: ..\SYSTEM\usart1\usart1.h
 .\objects\hc_sr04.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\hc_sr04.o: ..\SYSTEM\sys\sys.h
 .\objects\hc_sr04.o: ..\SYSTEM\delay\delay.h

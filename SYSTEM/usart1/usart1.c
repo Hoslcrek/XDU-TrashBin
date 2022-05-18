@@ -1,12 +1,15 @@
 #include "sys.h"
-#include "usart.h"	
+#include "usart1.h"	
 #include <string.h>
+
 //如果使用ucos,则包括下面的头文件即可.
 #if SYSTEM_SUPPORT_OS
 #include "includes.h"					//ucos 使用	  
 #endif
 
  
+ // PA9 TX
+ // PA10 RX
 
 //////////////////////////////////////////////////////////////////
 //加入以下代码,支持printf函数,而不需要选择use MicroLIB	  
@@ -36,17 +39,17 @@ int fputc(int ch, FILE *f)
 #if EN_USART1_RX   //如果使能了接收
 //串口1中断服务程序
 //注意,读取USARTx->SR能避免莫名其妙的错误   	
-u8 USART_RX_BUF[USART_REC_LEN];     //接收缓冲,最大USART_REC_LEN个字节.
-u8 CMD[USART_REC_LEN];  
+u8 USART1_RX_BUF[USART1_REC_LEN];     //接收缓冲,最大USART_REC_LEN个字节.
+
 //接收状态
 //bit15，	接收完成标志
 //bit14，	接收到0x0d
 //bit13~0，	接收到的有效字节数目
-u16 USART_RX_STA=0;       //接收状态标记	
+u16 USART1_RX_STA=0;       //接收状态标记	
 
 //初始化IO 串口1 
 //bound:波特率
-void uart_init(u32 bound){
+void uart1_init(u32 bound){
    //GPIO端口设置
   GPIO_InitTypeDef GPIO_InitStructure;
 	USART_InitTypeDef USART_InitStructure;
@@ -88,7 +91,7 @@ void uart_init(u32 bound){
 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=3;//抢占优先级3
 	NVIC_InitStructure.NVIC_IRQChannelSubPriority =3;		//子优先级3
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			//IRQ通道使能
-	NVIC_Init(&NVIC_InitStructure);	//根据指定的参数初始化VIC寄存器、
+	NVIC_Init(&NVIC_InitStructure);	//根据指定的参数初始化VIC寄存器
 
 #endif
 	
@@ -101,28 +104,25 @@ void USART1_IRQHandler(void)                	//串口1中断服务程序
 #if SYSTEM_SUPPORT_OS 		//如果SYSTEM_SUPPORT_OS为真，则需要支持OS.
 	OSIntEnter();    
 #endif
-	if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)  //规定以'/'结尾，忽略\r\n
-	{
-		Res = USART_ReceiveData(USART1);//(USART1->DR);	//读取接收到的数据
-
-		if(Res == '/'){
-			strcpy((char*)CMD,(char*)USART_RX_BUF);
-			USART_RX_STA = 0;
-			memset(USART_RX_BUF,0,sizeof(USART_RX_BUF[0])*USART_REC_LEN);
-		}
-		else{
-			if(Res != 0x0a && Res != 0x0d){
-				if(USART_RX_STA<USART_REC_LEN){
-					USART_RX_BUF[USART_RX_STA]=Res;
-					USART_RX_STA++;
+		//注意到AT指令的收都是+开头的，并且中间会有\r\n干扰，所以对中断服务进行重写
+		if(USART_GetFlagStatus(USART1,USART_IT_RXNE) != RESET){
+			Res=USART_ReceiveData(USART1);
+			if(1){ //接收未开始
+				if(Res=='+'){
+					USART1_RX_STA=0;
+					memset(USART1_RX_BUF,0,sizeof(USART1_RX_BUF[0])*USART1_REC_LEN);//如果接收到'+'，就将缓冲区清空，并移到0
 				}
 				else{
-					USART_RX_STA=0;
-				}
+					if(USART1_RX_STA<USART1_REC_LEN){
+						USART1_RX_BUF[USART1_RX_STA]=Res;
+						USART1_RX_STA++;
+					}
+					else{
+						USART1_RX_STA=0;
+					}
+				}	
 			}
-		}	
-	}
-
+		}
 #if SYSTEM_SUPPORT_OS 	//如果SYSTEM_SUPPORT_OS为真，则需要支持OS.
 	OSIntExit();  											 
 #endif

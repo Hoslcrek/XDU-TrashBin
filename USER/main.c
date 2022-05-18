@@ -1,6 +1,7 @@
 #include "sys.h"
 #include "delay.h"
-#include "usart.h"
+#include "usart1.h"
+#include "usart2.h"
 #include "led.h"
 #include "tftlcd.h"
 #include "spi.h"
@@ -11,7 +12,12 @@
 #include "HX711.h"
 
 
-// WARNING: PA2,PA3,PA9,PA10最好别用其他用途
+// WARNING: PA2,PA3,PA9,PA10除了USART最好别用其他用途
+// 注意：这个STM32F411RE开发板上PA2和PA3是没有和MCU连接的（/黄豆人流汗），要用USART2请使用ST-Link部分的TX和RX，详见https://shequ.stmicroelectronics.cn/thread-599987-1-1.html
+
+// USART1用于广和通L610通信，使用printf()
+// USART2用于上位机通信，使用USART2_SendData(u8* buf, u16 len)
+
 
 // TFTLCD接线：
 // SDA->PB5
@@ -23,7 +29,7 @@
 
 // TCS34725接线：
 // SDA->PA0
-// SCL->PA1
+// SCL->PA12
 
 // VL6180接线：
 // SDA->PC6
@@ -48,50 +54,62 @@ COLOR_HSL hsl;
 
 int main(void)
 { 
-	uint8_t range=0;
+//	uint8_t range=0;
 	uint16_t RGB565=0;
-	uint8_t i=0;
 	uint16_t HC_SR04_distance=0;
 	uint32_t weight=0;
 	
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	delay_init(168);
-	uart_init(115200);
-	TIM2_init(5000,419); 
 	
+	uart1_init(115200);
+	uart2_init(115200);
+	
+	TIM2_init(5000,419); 
 	LED_Init();
  	LCD_Init();
 	TCS34725_Init();
 	VL6180X_Init();
 	FPGA_GPIO_Init();
 	HC_SR04_GPIO_Init();
-	HX711_Init();
+//	HX711_Init();
 	
 	LCD_Clear(BLUE);
-	Display_TongFei_LOGO(0, 0);
+//	Display_TongFei_LOGO(0, 0);
 
 
 	delay_ms(100);
 		 
 	while(1)
 	{
-			range = VL6180X_Read_Range();
+//			range = VL6180X_Read_Range();
 			TCS34725_GetRawData(&rgb);
 			RGB565 = TCS34725_GetRGB565Data(&rgb); 
 			HC_SR04_distance = HC_SR04_GetDiatance();
-			weight = HX711_GetWeight();
+//			weight = HX711_GetWeight();
+		
 			printf("Start");
-			
 		
-			if(i<5)
-			{
+//			USART2_SendData("Start/",7);
+		
+			if(strstr((char*)CMD,"h") != 0){
+				USART2_SendData("Start",6);
 				FPGA_Send_Rotate(ROTATE_0);
-				delay_ms(2000);
-				FPGA_Send_Rotate(CCW_ROTATE_90);
-				delay_ms(2000);
-				i++;
 			}
-		
+			else if(strstr((char*)CMD,"i") != 0){
+				printf("%d",weight);
+				FPGA_Send_Rotate(CCW_ROTATE_90);
+			}
+			else if(strstr((char*)CMD,"j") != 0){
+				printf("135");
+				FPGA_Send_Rotate(CCW_ROTATE_135);
+			}
+			else if(strstr((char*)CMD,"k") != 0){
+				printf("180");
+				FPGA_Send_Rotate(CCW_ROTATE_180);
+			}
+			
+			
 			LCD_ShowNum(0,0,rgb.r,5,16);
 			LCD_ShowNum(50,0,rgb.g,5,16);
 			LCD_ShowNum(100,0,rgb.b,5,16);
@@ -106,8 +124,8 @@ int main(void)
 			LCD_Fill(120,120,150,150,RGB565);
 			
 			LCD_Fill(0,200,240,216,WHITE);
-			LCD_ShowString(0,200,200,16,16,(char*)CMD);
-			
+//			LCD_ShowString(0,200,200,16,16,(char*)CMD);
+			LCD_ShowString(0,200,200,16,16,(char*)USART1_RX_BUF);
 			delay_ms(1000);
 			
 	}
