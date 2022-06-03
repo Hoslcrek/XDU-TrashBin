@@ -1,4 +1,4 @@
-# XDU_stm32f411RETx_TCS34725Driver_VL6180XDriver
+# XDU 微控课设
 
 Board: NUCLEO-F411RE
 
