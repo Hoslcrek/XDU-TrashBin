@@ -9,10 +9,10 @@ void VL6180X_IIC_Init(void)
 {			
 	GPIO_InitTypeDef  GPIO_InitStructure;
 
-	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC, ENABLE);
 
 
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6 | GPIO_Pin_8;
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5 | GPIO_Pin_6;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
 	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
@@ -110,18 +110,18 @@ u8 VL6180X_IIC_Read_Byte(unsigned char ack)
 	unsigned char i,receive=0;
 	SDA_IN();
     for(i=0;i<8;i++ )
-	{
-        IIC_SCL=0; 
-        delay_us(2);
-				IIC_SCL=1;
-        receive<<=1;
-        if(READ_SDA)receive++;   
-		delay_us(1); 
+		{
+      IIC_SCL=0; 
+      delay_us(2);
+			IIC_SCL=1;
+      receive<<=1;
+      if(READ_SDA)receive++;   
+			delay_us(1); 
     }					 
     if (!ack)
-        VL6180X_IIC_NAck();
+      VL6180X_IIC_NAck();
     else
-        VL6180X_IIC_Ack();
+      VL6180X_IIC_Ack();
     return receive;
 }
 
@@ -162,19 +162,19 @@ u8 VL6180X_ReadByte(u16 reg)
 	u8 res;
 	uint8_t Index_H = (uint8_t)(reg >> 8);
 	uint8_t Index_L = (uint8_t)(reg & 0xff);
-    VL6180X_IIC_Start(); 
+  VL6180X_IIC_Start(); 
 	VL6180X_IIC_Send_Byte((VL6180X_DEFAULT_I2C_ADDR<<1)|0);//发送器件地址+写命令	
 	VL6180X_IIC_Wait_Ack();		//等待应答 
-    VL6180X_IIC_Send_Byte(Index_H);	//写寄存器地址
-    VL6180X_IIC_Wait_Ack();		//等待应答
+  VL6180X_IIC_Send_Byte(Index_H);	//写寄存器地址
+  VL6180X_IIC_Wait_Ack();		//等待应答
 	VL6180X_IIC_Send_Byte(Index_L);	//写寄存器地址
 	VL6180X_IIC_Wait_Ack();	
 	
-    VL6180X_IIC_Start();
+  VL6180X_IIC_Start();
 	VL6180X_IIC_Send_Byte((VL6180X_DEFAULT_I2C_ADDR<<1)|1);//发送器件地址+读命令	
-    VL6180X_IIC_Wait_Ack();		//等待应答 
+  VL6180X_IIC_Wait_Ack();		//等待应答 
 	res=VL6180X_IIC_Read_Byte(0);//读取数据,发送nACK 
-    VL6180X_IIC_Stop();			//产生一个停止条件 
+  VL6180X_IIC_Stop();			//产生一个停止条件 
 	return res;
 }
 

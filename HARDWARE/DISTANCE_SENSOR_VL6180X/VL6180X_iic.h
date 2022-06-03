@@ -61,7 +61,7 @@
 #define SDA_IN()  {GPIOC->MODER&=~(3<<(6*2));GPIOC->MODER|=0<<6*2;}
 #define SDA_OUT() {GPIOC->MODER&=~(3<<(6*2));GPIOC->MODER|=1<<6*2;}
 
-#define IIC_SCL    PCout(8) 
+#define IIC_SCL    PCout(5) 
 #define IIC_SDA    PCout(6) 
 #define READ_SDA   PCin(6)  
 

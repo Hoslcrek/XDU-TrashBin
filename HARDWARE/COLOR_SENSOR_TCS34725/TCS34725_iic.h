@@ -2,7 +2,7 @@
 
 // TCS34725接线：
 // SDA->PA0
-// SCL->PA1
+// SCL->PA5
 
 #define TCS34725_ADDRESS          (0x29)
 

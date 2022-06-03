@@ -4,7 +4,7 @@
 #define TCS_SDA_PIN_NUM       0
 #define TCS_SDA_PIN           GPIO_Pin_0
 #define TCS_SDA_GPIO          GPIOA
-#define TCS_SCL_PIN           GPIO_Pin_12
+#define TCS_SCL_PIN           GPIO_Pin_5
 #define TCS_SCL_GPIO          GPIOA
 
 #define TCS_SDA_DIR_IN()       {TCS_SDA_GPIO->MODER&=~(3<<(TCS_SDA_PIN_NUM*2));TCS_SDA_GPIO->MODER|=0<<(TCS_SDA_PIN_NUM*2);}//ÊäÈëÄ£Ê½

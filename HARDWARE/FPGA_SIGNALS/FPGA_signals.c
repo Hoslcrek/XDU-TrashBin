@@ -13,9 +13,9 @@ void FPGA_GPIO_Init(void)
     GPIO_InitStructure.GPIO_OType = GPIO_OType_PP; 
     GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_DOWN; //下拉
 	
-    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_12;
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0|GPIO_Pin_1;
     GPIO_Init(GPIOC,&GPIO_InitStructure); 
-		GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
+		GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0|GPIO_Pin_12;
 		GPIO_Init(GPIOB,&GPIO_InitStructure); 
 	  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_11|GPIO_Pin_12;
 		GPIO_Init(GPIOA,&GPIO_InitStructure); 

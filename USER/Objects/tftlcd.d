@@ -33,3 +33,4 @@
 .\objects\tftlcd.o: ..\HARDWARE\TFTLCD\tftlcd.h
 .\objects\tftlcd.o: ..\HARDWARE\TFTLCD\font.h
 .\objects\tftlcd.o: ..\HARDWARE\SPI\spi.h
+.\objects\tftlcd.o: ..\HARDWARE\TFTLCD\TongFei.h
